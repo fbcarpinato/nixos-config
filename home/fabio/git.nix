@@ -8,11 +8,7 @@
     userEmail = "fabiocarpinato@outlook.it";
 
     signing.key = "CFCFAA7433D62D92";
-
-    extraConfig = { 
-      "commit.gpgSign" = true;
-      "tag.gpgSign" = true;
-    };
+    signing.signByDefault = true;
   };
 }
 

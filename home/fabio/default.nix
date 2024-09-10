@@ -9,7 +9,10 @@
     ./rofi.nix
     ./waybar.nix
     ./alacritty.nix
+    ./zsh.nix
+    ./tmux.nix
     ./git.nix
+    ./nvim.nix
   ];
 
   home.file.".config/hypr/hyprland.conf" = {
@@ -17,13 +20,6 @@
     force = true;
     text = builtins.readFile ./hyprland.conf;
   };
-
-  # link all files in `./scripts` to `~/.config/i3/scripts`
-  # home.file.".config/i3/scripts" = {
-  #   source = ./scripts;
-  #   recursive = true;   # link recursively
-  #   executable = true;  # make all files executable
-  # };
 
   # encode the file content in nix configuration file directly
   # home.file.".xxx".text = ''
@@ -39,8 +35,47 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    # Applications
+    firefox
+    obsidian
     bitwarden
-    nerdfonts    
+
+    # Developement
+    strace
+    gcc
+    luarocks
+    lua5_1
+    nodejs
+
+    # Utilities / Misc
+    unzip
+    ripgrep           # the cooler grep
+    tree              # list files and folder in a tree structure
+    cowsay            # For fun
+    fzf
+
+    # Virtualisation
+    docker
+    docker-compose
+    qemu
+
+    # Networking
+    wget
+    curl
+
+    # Wayland specific
+    waybar            # Simple bar, configured with json and css
+    dunst             # Notification manager
+    libnotify         # Dependency of dunst
+    rofi-wayland      # Wailand compatible rofi
+    rofi-power-menu   # Rofi but for power menu
+    grim              # Take screenshot
+    slurp             # Select a region
+    wl-clipboard      # Save on clipboard from terminal
+    hyprpaper         # wallpaper engine for hyprland
+
+    # Fonts
+    nerdfonts
   ];
 
   # Allow unfree software
